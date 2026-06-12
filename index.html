@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Visual Analytics APERS</title>
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
+  <body>
+    <div class="shell">
+      <header class="site-header">
+        <div class="gov-bar" aria-label="Barra Governo RS">
+          <strong>rs.gov.br</strong>
+          <nav aria-label="Links do governo">
+            <a href="https://estado.rs.gov.br/noticias">NOTICIAS</a>
+            <a href="https://www.rs.gov.br/servicos">SERVICOS</a>
+            <a href="https://www.rs.gov.br/carta-de-servicos">CENTRAL DO CIDADAO</a>
+            <a href="https://transparencia.rs.gov.br">TRANSPARENCIA</a>
+            <a href="https://estado.rs.gov.br/secretarias">SECRETARIAS E ORGAOS</a>
+            <a href="https://diariooficial.rs.gov.br">DIARIO OFICIAL</a>
+          </nav>
+        </div>
+
+        <div class="utility-bar">
+          <span>SECRETARIA DE PLANEJAMENTO, GOVERNANCA E GESTAO</span>
+          <a href="#conteudo">Conteudo</a>
+          <a href="#menu">Menu</a>
+          <a href="#busca">Busca</a>
+          <a href="https://apers.rs.gov.br/acessibilidade">Acessibilidade</a>
+          <a href="#contraste">Contraste</a>
+          <a href="https://apers.rs.gov.br/fale-conosco">Fale conosco</a>
+          <a href="https://apers.rs.gov.br/mapa-do-site">Mapa do site</a>
+        </div>
+
+        <div class="brand-row">
+          <a class="brand" href="https://apers.rs.gov.br/inicial" aria-label="Pagina inicial do APERS">
+            <span class="brand-mark">
+              <span>ARQUIVO</span>
+              <strong>PUBLICO</strong>
+            </span>
+            <div>
+              <strong>Arquivo Publico do Estado do Rio Grande do Sul</strong>
+              <small>Secretaria de Planejamento, Governanca e Gestao</small>
+            </div>
+          </a>
+          <div class="brand-tools">
+            <div class="social-links" aria-label="Redes sociais">
+              <a href="https://www.linkedin.com" aria-label="LinkedIn">in</a>
+              <a href="https://www.youtube.com" aria-label="YouTube">▶</a>
+              <a href="https://www.instagram.com" aria-label="Instagram">◎</a>
+              <a href="https://open.spotify.com" aria-label="Spotify">≋</a>
+            </div>
+            <label class="search-box" id="busca">
+              <span>Buscar</span>
+              <input type="search" placeholder="Buscar" />
+              <button type="button" aria-label="Buscar">⌕</button>
+            </label>
+            <div class="status-pill" id="loadStatus">Carregando dados</div>
+          </div>
+        </div>
+
+        <nav class="site-nav" id="menu" aria-label="Navegacao principal do APERS">
+          <a href="https://apers.rs.gov.br/inicial" aria-label="Inicial">⌂</a>
+          <a href="https://apers.rs.gov.br/institucional">Institucional ▾</a>
+          <a href="https://apers.rs.gov.br/gestao-documental">Gestao Documental ▾</a>
+          <a href="https://apers.rs.gov.br/servicos">Servicos ▾</a>
+          <a href="https://apers.rs.gov.br/acervos">Acervos ▾</a>
+          <a href="https://apers.rs.gov.br/comunicacao">Comunicacao ▾</a>
+          <a href="https://apers.rs.gov.br/publicacoes">Publicacoes</a>
+          <a class="active" href="/oda">Observatorio de Dados</a>
+        </nav>
+      </header>
+
+      <main class="main" id="conteudo">
+        <nav class="breadcrumb" aria-label="Voce esta aqui">
+          <a href="https://apers.rs.gov.br/inicial">Inicial</a>
+          <span>/</span>
+          <span>Observatorio de Dados Arquivisticos</span>
+        </nav>
+
+        <section class="intro-band">
+          <div class="intro-title">
+            <div class="oda-emblem" aria-hidden="true">
+              <img src="./assets/icons/observatorio.png" alt="" />
+            </div>
+            <div>
+              <p class="eyebrow">Nova aba do portal APERS</p>
+              <h1>Observatorio de Dados Arquivisticos</h1>
+            </div>
+          </div>
+          <div class="intro-copy">
+            <strong>/oda</strong>
+            <p>
+              Camada analitica complementar ao site existente, preservando navegacao institucional,
+              servicos, consultas textuais e paginas de acervo.
+            </p>
+          </div>
+        </section>
+
+        <section class="filters" aria-label="Filtros globais">
+          <label>
+            Ano inicial
+            <input id="yearStart" type="range" min="1850" max="2026" step="1" value="1850" />
+            <span id="yearStartLabel">1850</span>
+          </label>
+          <label>
+            Ano final
+            <input id="yearEnd" type="range" min="1850" max="2026" step="1" value="2026" />
+            <span id="yearEndLabel">2026</span>
+          </label>
+          <label>
+            Periodo historico
+            <select id="periodFilter"></select>
+          </label>
+          <label>
+            Fundo documental
+            <select id="fundFilter"></select>
+          </label>
+          <label>
+            Orgao produtor
+            <select id="producerFilter"></select>
+          </label>
+          <label>
+            Municipio
+            <select id="cityFilter"></select>
+          </label>
+          <label>
+            Tema
+            <select id="themeFilter"></select>
+          </label>
+          <label>
+            Tipologia
+            <select id="typeFilter"></select>
+          </label>
+          <button id="resetFilters" type="button">Limpar filtros</button>
+          <button id="resetZoom" type="button">Reset zoom</button>
+        </section>
+
+        <section class="export-bar" aria-label="Exportacao de dados e visualizacoes">
+          <button data-export="csv" type="button">Exportar CSV</button>
+          <button data-export="png" type="button">Exportar PNG</button>
+          <button data-export="svg" type="button">Exportar SVG</button>
+          <span id="selectionStatus">Todos os registros visiveis</span>
+        </section>
+
+        <section class="kpi-grid" aria-label="Painel executivo">
+          <article class="kpi-card">
+            <span>Total de fundos documentais</span>
+            <strong id="kpiFunds">0</strong>
+          </article>
+          <article class="kpi-card">
+            <span>Total de documentos</span>
+            <strong id="kpiDocs">0</strong>
+          </article>
+          <article class="kpi-card">
+            <span>Periodo historico coberto</span>
+            <strong id="kpiPeriod">0</strong>
+          </article>
+          <article class="kpi-card">
+            <span>Orgaos produtores</span>
+            <strong id="kpiProducers">0</strong>
+          </article>
+          <article class="kpi-card">
+            <span>Usuarios atendidos</span>
+            <strong id="kpiUsers">0</strong>
+          </article>
+          <article class="kpi-card">
+            <span>Evolucao anual de consultas</span>
+            <strong id="kpiConsultas">0</strong>
+          </article>
+        </section>
+
+        <section class="visual-grid">
+          <article class="viz-panel wide" id="temporalidade">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Visualizacoes temporais</p>
+                <h2>Crescimento do acervo e consultas anuais</h2>
+              </div>
+            </div>
+            <div class="chart-frame" id="lineChart"></div>
+          </article>
+
+          <article class="viz-panel wide" id="periodos">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Distribuicao documental</p>
+                <h2>Documentos por periodo historico</h2>
+              </div>
+            </div>
+            <div class="chart-frame" id="barChart"></div>
+          </article>
+
+          <article class="viz-panel wide" id="relacoes">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Relacoes</p>
+                <h2>Rede de orgaos produtores e fundos</h2>
+              </div>
+            </div>
+            <div class="chart-frame tall" id="networkGraph"></div>
+          </article>
+
+          <article class="viz-panel wide" id="fluxos">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Fluxo documental</p>
+                <h2>Producao, transferencia, recolhimento e destinacao</h2>
+              </div>
+            </div>
+            <div class="chart-frame tall" id="sankeyFlow"></div>
+          </article>
+
+          <article class="viz-panel wide" id="mapa">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Geografia</p>
+                <h2>Distribuicao dos acervos no Rio Grande do Sul</h2>
+              </div>
+            </div>
+            <div class="chart-frame tall" id="geoMap"></div>
+          </article>
+
+          <article class="viz-panel wide" id="semantica">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Visual Analytics avancada</p>
+                <h2>UMAP semantico de descricoes arquivisticas</h2>
+              </div>
+            </div>
+            <div class="chart-frame tall" id="scatterPlot"></div>
+          </article>
+        </section>
+      </main>
+    </div>
+
+    <div class="tooltip" id="tooltip" role="status" aria-live="polite"></div>
+
+    <script type="importmap">
+      {
+        "imports": {
+          "d3": "https://cdn.jsdelivr.net/npm/d3@7/+esm",
+          "apache-arrow": "https://cdn.jsdelivr.net/npm/apache-arrow@17/+esm",
+          "parquet-wasm": "https://cdn.jsdelivr.net/npm/parquet-wasm@0.6.0/esm/+esm"
+        }
+      }
+    </script>
+    <script type="module" src="./js/app.js"></script>
+  </body>
+</html>
