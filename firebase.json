@@ -1,0 +1,56 @@
+{
+  "hosting": {
+    "public": ".",
+    "ignore": [
+      "firebase.json",
+      ".firebaserc",
+      ".firebaseignore",
+      "README.md",
+      ".git",
+      ".git/**",
+      ".github",
+      ".github/**",
+      ".firebase",
+      ".firebase/**",
+      ".*",
+      ".*/**",
+      "**/.*",
+      "**/.*/**",
+      "**/node_modules/**"
+    ],
+    "headers": [
+      {
+        "source": "**/*.@(js|css)",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "public,max-age=3600"
+          }
+        ]
+      },
+      {
+        "source": "**/*.parquet",
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "application/octet-stream"
+          },
+          {
+            "key": "Cache-Control",
+            "value": "public,max-age=3600"
+          }
+        ]
+      }
+    ],
+    "rewrites": [
+      {
+        "source": "/oda",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/oda/**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}

@@ -23,9 +23,21 @@ Acesse:
 http://localhost:8000
 ```
 
-Em producao, publique esta pasta como o conteudo da rota `/oda`. Os caminhos de assets usam
-referencias relativas (`./css`, `./js`, `./data`) para funcionar corretamente quando o dashboard
-estiver hospedado em `https://apers.rs.gov.br/oda`.
+Em producao, publique esta pasta no Firebase Hosting do projeto `apers-oda`. Os caminhos de assets
+usam referencias relativas (`./css`, `./js`, `./data`) para funcionar corretamente tanto no dominio
+do Firebase quanto em uma rota futura como `https://apers.rs.gov.br/oda`.
+
+## Publicar no Firebase
+
+O repositorio ja inclui `firebase.json`, `.firebaserc` e `.firebaseignore` para publicar o site
+estatico diretamente a partir da raiz do projeto.
+
+```bash
+firebase deploy --only hosting
+```
+
+Se o deploy for feito pelo GitHub Actions, o workflow deve usar o projeto `apers-oda` e nao precisa
+executar build antes da publicacao.
 
 ## Estrutura
 
@@ -78,7 +90,7 @@ estiver hospedado em `https://apers.rs.gov.br/oda`.
 
 Um pipeline Python pode gerar os Parquet em `data/` a partir de sistemas arquivisticos.
 Uma GitHub Action pode executar o ETL em agenda, versionar os artefatos e publicar o site
-estatico no GitHub Pages. Como a camada visual depende apenas dos arquivos locais, a troca
+estatico no Firebase Hosting. Como a camada visual depende apenas dos arquivos locais, a troca
 de dados manuais por dados automatizados nao exige backend.
 
 Evite bibliotecas de graficos prontas como Chart.js, ECharts, Recharts ou Plotly. Toda a
